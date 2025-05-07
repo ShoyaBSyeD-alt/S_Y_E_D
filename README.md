@@ -20,7 +20,7 @@
 
 ###
 
-<p align="left">I'm from banglore<br><br>- 🔭 I’m working as ...<br>- 📚 I'm currently learning ...<br>- ⚡ In my free time I ...</p>
+<p align="left">I'm from banglore<br><br>- 🔭 I’m working as process trainee<br>- 📚 I'm currently learning DevOps<br>- ⚡ In my free time I listen music</p>
 
 ###
 
