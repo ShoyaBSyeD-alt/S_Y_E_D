@@ -8,8 +8,8 @@ WORKDIR /app
 CPOY . /app
 
 #running the command to install dependencies
-RUN pip intall -r reruirements.txt
+RUN pip install -r requirements.txt
 
 #to run the app
-CMD ["python", "app.py"
+CMD ["python", "app.py"]
 
