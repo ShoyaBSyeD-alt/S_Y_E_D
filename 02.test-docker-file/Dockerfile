@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 #Port documentation
-EXPOSES 2000
+EXPOSE 2000
 
 #Environmente variable
 ENV NODE_ENV=production
