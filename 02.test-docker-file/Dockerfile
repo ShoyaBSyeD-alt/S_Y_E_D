@@ -20,5 +20,5 @@ EXPOSE 8347
 ENV NODE_ENV=production
 
 #running the code
-#CMD ["node","index.js"]
+CMD ["node","index.js"]
 
