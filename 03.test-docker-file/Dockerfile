@@ -14,4 +14,4 @@ RUN npm install && npm run build
 FROM nginx:alpine
 
 #coping the files from 1st to the destination point
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/build /usr/share/nginx/html
