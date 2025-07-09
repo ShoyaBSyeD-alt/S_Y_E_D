@@ -1,5 +1,5 @@
 #1st stage
-FROM node:20 as build
+FROM node:20-slim AS build
 
 #working directory
 WORKDIR /app
