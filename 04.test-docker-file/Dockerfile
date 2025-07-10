@@ -1,23 +1,21 @@
-FROM ubuntu AS build
+# Build Stage: use official Go image
+FROM golang:1.22 AS build
 
-RUN apt-get update && apt-get install -y golang-go
-
-ENV GO111MODULE=off
+WORKDIR /app
 
 COPY . .
 
-RUN CGO_ENABLED=0 go build -o /app .
+# Optional: disable CGO for static binary
+ENV CGO_ENABLED=0
 
-############################################
-# HERE STARTS THE MAGIC OF MULTI STAGE BUILD
-############################################
+# Build Go app
+RUN go build -o /app .
 
+# Final Stage: minimal scratch image
 FROM scratch
 
-# Copy the compiled binary from the build stage
 COPY --from=build /app /app
 
-# Set the entrypoint for the container to run the binary
+EXPOSE 8080
 ENTRYPOINT ["/app"]
-
 
