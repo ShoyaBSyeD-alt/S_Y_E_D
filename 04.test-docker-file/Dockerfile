@@ -1,21 +1,20 @@
+# Build Stage
 FROM golang:alpine AS build
 
 WORKDIR /app
 
-# Copy the Go source code
 COPY . .
 
-# Set Go environment
 ENV CGO_ENABLED=0
 
-# Initialize go module (if not already in your repo)
-RUN go mod init calculator && go mod tidy
+RUN go build -o app
 
-# Build the Go app
-RUN go build -o /app .
-
+# Final Image
 FROM scratch
-COPY --from=build /app /app
+
+COPY --from=build /app/app /app
+
 EXPOSE 8080
+
 ENTRYPOINT ["/app"]
 
