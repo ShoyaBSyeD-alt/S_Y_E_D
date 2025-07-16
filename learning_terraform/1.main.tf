@@ -1,12 +1,6 @@
-provider "aws" {
-    access_key = "give your access key"
-    secret_key = "give your secret key
-    region = "us-east-1"
-}
-
 resource "aws_instance" "test" {
     ami = var.ami
-    key_name = var.key
+    key_name = var.keys
     instance_type = "t2.micro"
 
     tags = {
