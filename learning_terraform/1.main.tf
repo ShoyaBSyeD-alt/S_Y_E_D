@@ -1,8 +1,16 @@
 resource "aws_instance" "test" {
     ami = var.ami
-    key_name = var.keys
+    key_name = var.key
     instance_type = "t2.micro"
 
+    user_data = <<-EOF
+                #!/bin/bash
+                sudo apt update -y
+                sudo apt install nginx -y
+                sudo systemctl start nginx
+                sudo systemctl enable nginx
+                echo "<h1>Terraform EC2 Instance with NGINX</h1>" > /var/www/html/index.html
+            EOF
     tags = {
         Name = "TF demo1"
     }
