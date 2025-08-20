@@ -1,0 +1,29 @@
+resource "aws_s3_bucket" "my_bucket" {
+    bucket = "syed_learning_terraform_bucket"
+    acl = "private"
+
+    tags = {
+        Name = "my-s3-bucket"
+        Environment = "Dev"
+    }
+}
+
+# Enable Versioning (optional)
+resource "aws_s3-bucket_versioning" {
+    bucket = aws_s3_bucket.my_bucket.id
+
+    versioning_configuration {
+        status = "Enabled"
+    } 
+}
+
+# Block Public Access
+
+resource "aws_s3_bucket_public_access_block" "public_access" {
+    bucket = aws_s3_bucket.my_bucket.id
+
+    block_public_acls       = true
+    ignore_public_acls      = true
+    block_public_policy     = true
+    restrict_public_buckets = true
+}
