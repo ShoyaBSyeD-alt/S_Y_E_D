@@ -1,6 +1,5 @@
 resource "aws_s3_bucket" "my_bucket" {
     bucket = "syed_learning_terraform_bucket"
-    acl = "private"
 
     tags = {
         Name = "my-s3-bucket"
@@ -8,8 +7,13 @@ resource "aws_s3_bucket" "my_bucket" {
     }
 }
 
+resource "aws_s3_bucket_acl" "my_bucket_acl" {
+    bucket = aws_s3_bucket.my_bucket.id
+    acl    = "private"  # Options: private, public-read, public-read-write, authenticated-read
+}
+
 # Enable Versioning (optional)
-resource "aws_s3-bucket_versioning" {
+resource "aws_s3_bucket_versioning" {
     bucket = aws_s3_bucket.my_bucket.id
 
     versioning_configuration {
